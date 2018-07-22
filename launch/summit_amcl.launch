@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+
+  <arg name="use_map_topic" default="true"/>
+  <arg name="scan_topic" default="/hokuyo_base/scan" />
+
+  <node pkg="amcl" type="amcl" name="amcl">
+    <rosparam command="load" file="$(find localization_tests)/config/amcl_params.yaml"/>
+    <remap from="scan" to="$(arg scan_topic)"/>    
+  </node>
+
+</launch>

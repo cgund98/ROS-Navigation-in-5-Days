@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Run the map server -->
+  <arg name="map_file" default="$(find localization_tests)/maps/fetch.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!--- Run AMCL -->
+  <include file="$(find localization_tests)/launch/summit_amcl.launch" />
+
+  <!--- Run Move Base -->
+  <include file="$(find localization_tests)/launch/summit_move_base.launch" />
+
+</launch>
+
